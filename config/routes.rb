@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+  namespace :public do
+    resources :addresses, only: [:index, :edit, :update, :create, :destroy]
+   
+  end
+  namespace :public do
+    resources :customers, only: [:show, :edit, :update]
+    get 'customers/withdrawal_confirmation'
+    patch 'customers/withdrawal'
+  end
+  namespace :public do
+    get 'homes/top'
+    get 'homes/about'
+  end
+
+  devise_for(
+    :customers,
+    path: 'customers',
+    module: 'public'
+  )
+
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]

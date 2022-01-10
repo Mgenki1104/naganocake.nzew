@@ -15,6 +15,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     #@item.genre_id
     @item.save
+
     redirect_to admin_items_path
   end
 
