@@ -1,0 +1,9 @@
+<h1>商品一覧</h1>
+<% @items.each do |item| %>
+<div>
+  <p><%= attachment_image_tag item, :image %></p>
+  <p>商品名：<%= item.name %></p>
+  <p>価格：<%= item.price %></p>
+  
+</div>
+<% end %>

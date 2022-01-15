@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   namespace :public do
-    resources :addresses, only: [:index, :edit, :update, :create, :destroy]
-   
+    resources :items, only: [:index, :show]
   end
   namespace :public do
+    resources :addresses, only: [:index, :edit, :update, :create, :destroy]
+
+  end
+  namespace :public do
+    get 'customers/withdrawal_confirmation' => "customers#withdrawal_confirmation"
+    patch 'customers/withdrawal' => "customers#withdrawal"
     resources :customers, only: [:show, :edit, :update]
-    get 'customers/withdrawal_confirmation'
-    patch 'customers/withdrawal'
   end
   namespace :public do
     get 'homes/top'

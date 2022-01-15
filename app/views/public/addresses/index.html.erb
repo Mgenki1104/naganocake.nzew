@@ -17,8 +17,10 @@
   </div>
 <% end %>
 
-<%# @customer.each do |customer| %>
-<p>郵便番号：<%= @customer.postal_code %></p>
-<p>住所：<%= @customer.address %></p>
-<p>氏名：<%= @customer.first_name %><%= @customer.last_name %></p>
-<%# end %>
+<% @addresses.each do |address| %>
+<p>郵便番号：<%= address.postal_code %></p>
+<p>住所：<%= address.address %></p>
+<p>氏名：<%= address.name %></p>
+<%= link_to "編集する", edit_public_address_path(address) %>
+<%= link_to "削除", public_address_path(address), method: :delete %>
+<% end %>
