@@ -5,5 +5,9 @@
   <h1><%= @item.name %></h1>
   <p><%= @item.introduction %></p>
   <p>￥<%= (@item.price * 1.1).floor %>（税込）</p>
-
+<%= form_with model: @cart_item, url: public_cart_items_path, local:true do |f| %>
+     <%= f.hidden_field :cart_item, value: @item %>
+     <%= f.select :amount, *[1..9] %>
+     <%= f.submit 'カートに入れる' %>
+<% end %>
 </div>
