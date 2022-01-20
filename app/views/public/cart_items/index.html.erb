@@ -1,7 +1,9 @@
 <h1>ショッピングカート</h1>
 <% @cart_items.each do |cart_item| %>
-  <p>商品名：<%= cart_item.name %></p>
-  <p>単価（税込）：<%= item.price %></p>
-  <p>数量：<%= item.price %></p>
-  <p>小計：<%= item.price %></p>
-<% end %>git 
+  <p><%= link_to attachment_image_tag(cart_item.item, :image, :fill, 60, 60 )%></p>
+  <p>商品名：<%= cart_item.item.name %></p>
+  <%#= (item.price * 1.1).floor %>
+  <p>単価（税込）：<%= (cart_item.item.price * 1.1).floor %></p>
+  <p>数量：<%= cart_item.amount %></p>
+  <p>小計：<%= (cart_item.item.price * 1.1).floor * cart_item.amount %></p>
+<% end %>
