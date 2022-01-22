@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :customers, only: [:index, :show, :edit, :update]
+  end
   namespace :public do
     resources :cart_items, only: [:index, :update ,:destroy, :create]
     delete 'cart_items/destroy_all'
