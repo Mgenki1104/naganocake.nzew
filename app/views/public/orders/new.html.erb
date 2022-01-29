@@ -1,2 +1,16 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<h1>注文情報入力</h1>
+
+<%= form_with model: @order, url: public_orders_path, local:true do |f| %>
+<h2>支払方法</h2>
+    <p><%= f.radio_button :payment_method, "credit_card" %>
+      <%= f.label :payment_method, "クレジットカード" %></p>
+
+    <p><%= f.radio_button :payment_method, "transfer" %>
+       <%= f.label :payment_method, "銀行振込" %></p>
+<h2>お届け先</h2>
+　  <p>ご自身の住所</p>
+　  〒<%= @customer.postal_code %> <%= @customer.address %> <%= @customer.first_name %><%= @customer.last_name %>
+　  <p>登録済み住所から選択</p>
+　  <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
+　  <p>ご自身の住所</p>
+ <% end %>
